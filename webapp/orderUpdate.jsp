@@ -70,7 +70,7 @@
 					</div>
 					
 					<div class="form-row">
-						<input type="text" name="adminid" class="additional" id="productdesc" value="<%=resultSet.getString("adminid") %>" required>
+						<input type="text" name="adminid" class="additional" id="productdesc" value="<%=session.getAttribute("SES_ID") %>" required>
 					</div>
 
 					<div class="form-row-last" >

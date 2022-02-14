@@ -179,7 +179,7 @@
 									<td class="column3"><%=resultSet.getString("adminid") %></td>
 									<td class="column4">
 										<a href="deleteOrder.jsp?orderid=<%=resultSet.getString("orderid") %>"><button class="btn"><i class="fa fa-trash"></i></button></a>
-										<a href="orderUpdate.jsp?orderid=<%=resultSet.getString("orderid") %>"><button class="btn"><i class="fa fa-trash"></i></button></a>
+										<a href="orderUpdate.jsp?orderid=<%=resultSet.getString("orderid") %>"><button class="btn"><i class="fa fa-pencil"></i></button></a>
 									</td>
 								</tr>
 						<%
