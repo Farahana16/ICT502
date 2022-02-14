@@ -1,5 +1,6 @@
 package feedback;
 
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -8,16 +9,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.Feedback;
 import dao.FeedbackDAO;
+import model.Feedback;
 
 /**
  * Servlet implementation class addFeedbackController
  */
-@WebServlet("/addFeedbackController")
+@WebServlet(name = "addFeedbackControllerr", urlPatterns = { "/addFeedbackControllerr" })
 public class addFeedbackController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private FeedbackDAO dao;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,7 +34,6 @@ public class addFeedbackController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 	}
 
 	/**
@@ -41,13 +42,13 @@ public class addFeedbackController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		Feedback f = new Feedback();
-		f.setFeedbackRating(Integer.parseInt(request.getParameter("feedbackRating")));
-		f.setFeedbackComment(request.getParameter("feedbackComment"));
+		f.setFeedbackRating(request.getParameter("feedbackrating"));
+		f.setFeedbackComment(request.getParameter("feedbackcomment"));
 	
 		
 		dao.addFeedback(f);
 		request.setAttribute("feed",FeedbackDAO.getAllFeed());
-		RequestDispatcher view = request.getRequestDispatcher("feedbackList.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("ListFeedback.jsp");
 		view.forward(request, response);
 	}
 
