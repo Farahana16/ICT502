@@ -6,15 +6,15 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
- <link rel="stylesheet" href="styleFeed.css">
+ <link rel="stylesheet" href="css/styleFeed.css">
 </head>
 <body><br><br>
 	<div id="feedback-form">
   <h2 class="header">Thank you for review!</h2>
   <div>
-    <form action="addFeedbackController" method="post">
+    <form action="addFeedbackControllerr" method="post">
 	    <label for="details">Rate: </label>
-	        <select name="feedbackRating" required>
+	        <select name="feedbackrating" required>
 	                  <option value="1">1</option>
 	                   <option value="2">2</option>
 	                    <option value="3">3</option>
@@ -23,11 +23,11 @@
 	   </select>
 	   <br><br>
 	   <label for="details">Comment: </label>
-      <textarea name="feedbackComment" placeholder="Leave your review here"></textarea>
+      <textarea name="feedbackcomment" placeholder="Leave your review here"></textarea>
       <button type="submit">Submit</button>
     </form>
   </div>
 </div>
 
 </body>
-</html>
+</html
