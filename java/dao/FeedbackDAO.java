@@ -11,22 +11,21 @@ public class FeedbackDAO {
 	static PreparedStatement ps = null;
 	static Statement stmt = null;
 	static ResultSet rs = null;
-	private int feedbackId, feedbackRating, orderId;
-	private String feedbackComment;
+	private int feedbackid, orderid;
+	private String feedbackcomment, feedbackrating;
 	
 	public void addFeedback(Feedback bean) {
-		feedbackId = bean.getFeedbackId();
-		feedbackRating = bean.getFeedbackRating();
-		feedbackComment = bean.getFeedbackComment();
-		orderId = bean.getOrderId();
+		feedbackid = bean.getFeedbackId();
+		feedbackrating = bean.getFeedbackRating();
+		feedbackcomment = bean.getFeedbackComment();
+		orderid = bean.getOrderId();
 		
 		try {
 			con = ConnectionManager.getConnection();
-			ps = con.prepareStatement("INSERT INTO feedback(feedbackRating, feedbackComment,orderId) VALUES(?,?,?)");
+			ps = con.prepareStatement("INSERT INTO feedback(feedbackrating, feedbackcomment) VALUES(?,?)");
 			
-			ps.setInt(1, feedbackRating);
-			ps.setString(2, feedbackComment);
-			ps.setInt(3, orderId);
+			ps.setString(1, feedbackrating);
+			ps.setString(2, feedbackcomment);
 		
 			
 			ps.executeUpdate();
@@ -44,12 +43,12 @@ public class FeedbackDAO {
 			con = ConnectionManager.getConnection();
 			stmt = con.createStatement();
 			
-			rs = stmt.executeQuery("SELECT * FROM feedback ORDER BY feedbackId");
+			rs = stmt.executeQuery("SELECT * FROM feedback ORDER BY feedbackid");
 			while(rs.next()) {
 				Feedback f = new Feedback();
-				f.setFeedbackId(rs.getInt("feedbackId"));
-				f.setFeedbackRating(rs.getInt("feedbackRating"));
-				f.setFeedbackComment(rs.getString("feedbackComment"));
+				f.setFeedbackId(rs.getInt("feedbackid"));
+				f.setFeedbackRating(rs.getString("feedbackrating"));
+				f.setFeedbackComment(rs.getString("feedbackcomment"));
 				
 				feed.add(f);
 			} con.close();
@@ -57,19 +56,19 @@ public class FeedbackDAO {
 		return feed;
 	}
 
-	public static Feedback getFeedbackById(int feedbackId) {
+	public static Feedback getFeedbackById(int feedbackid) {
 		Feedback f = new Feedback();
 		try {
 			con = ConnectionManager.getConnection();
 			
-			ps = con.prepareStatement("SELECT * FROM feedback WHERE feedbackId=?");
-			ps.setInt(1, feedbackId);
+			ps = con.prepareStatement("SELECT * FROM feedback WHERE feedbackid=?");
+			ps.setInt(1, feedbackid);
 			
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				
-				f.setFeedbackRating(rs.getInt("feedbackRating"));
-				f.setFeedbackComment(rs.getString("feedbackComment"));
+				f.setFeedbackRating(rs.getString("feedbackrating"));
+				f.setFeedbackComment(rs.getString("feedbackcomment"));
 				
 				
 				
@@ -78,11 +77,11 @@ public class FeedbackDAO {
 		return f;
 	}
 
-public void deleteFeedback(int feedbackId) {
+public void deleteFeedback(int feedbackid) {
 	try {
 		con = ConnectionManager.getConnection();
-		ps = con.prepareStatement("DELETE FROM feedback WHERE feedbackId=?");
-		ps.setInt(1, feedbackId);
+		ps = con.prepareStatement("DELETE FROM feedback WHERE feedbackid=?");
+		ps.setInt(1, feedbackid);
 		ps.executeUpdate();
 		
 		con.close();
