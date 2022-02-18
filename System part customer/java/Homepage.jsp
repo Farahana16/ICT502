@@ -50,6 +50,23 @@
                         </ul>
                     </div>
                 </li>-->
+		    <li><a href="#">Account</a>
+                    <div class="sub-menu-1">
+                        <ul>
+                            <li><a href="BillingAddressForm1.jsp">Add Billing Address</a></li>
+                            <li><a href="ShippingAddressForm1.jsp">Add Shipping Address</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="#">Update Account</a>
+                    <div class="sub-menu-1">
+                        <ul>
+                            <li><a href="BillingAddressForm.jsp">Update Billing Address</a></li>
+                            <li><a href="ShippingAddressForm.jsp">Update Shipping Address</a></li>
+                            <li><a href="AccountUpdateForm.jsp">Update Account</a></li>
+                        </ul>
+                    </div>
+                </li>
                 <li><a href="#"><i class="fa fa-user"></i></a>
                     <div class="sub-menu-1">
                         <ul>
