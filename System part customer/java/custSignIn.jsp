@@ -25,7 +25,7 @@
 				//processing resultset - iterate
 				if(rs.next()){
 					String custID = rs.getString("custID");
-					//session.setAttribute("SES_ID",custID);
+					session.setAttribute("SES_ID",custID);
 					response.sendRedirect("Homepage.jsp?custID=" + custID);
 				}
 				else {
