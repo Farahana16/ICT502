@@ -53,13 +53,15 @@
                 <li><a href="#"><i class="fa fa-user"></i></a>
                     <div class="sub-menu-1">
                         <ul>
-                            <!--  <li><a href="#">Update Account</a></li>-->
+                            <li><a href="UpdateAccount.jsp">Update Account</a></li>
+                            <li><a href="billingAddress.jsp">Update Billing Address</a></li>
+                            <li><a href="shippingAddress.jsp">Update Shipping Address</a></li>
                             <li><a href="ViewOrderController?custID=<%=custID%>">View Order</a></li>
                             <li><a href="index.jsp">Log Out</a></li>
                         </ul>
                     </div>
                 </li>
-                <li><a href="Cart2.jsp?custID=<%=custID%>"><i class="fa fa-shopping-cart"></i></li></a>
+                <li><a href="Cart2.jsp?custID=<%=custID%>"><i class="fa fa-shopping-cart"></i></a></li>
             </ul>
         </div>
 
@@ -189,7 +191,7 @@
         }
         
         //add product to cart
-        function addToCart(id){
+        function addToCart(id){ 
        		console.log(id)
        		location.href = "addToCart.jsp?productID=" + id + "&custID=" + <%=custID%>;
 			alert("Item add to cart!");
