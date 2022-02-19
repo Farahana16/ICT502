@@ -15,8 +15,8 @@
 	    		alert("Address Updated Successfully!")
 	    	}
 	    	
-	    	function deleteBilling(){
-	    		alert("Account Deleted")
+	    	function addBilling(){
+	    		alert("Address Added Successfully!")
 	    	}
 	    </script>  
 	</head>
@@ -29,9 +29,9 @@
 		      			//String ID = session.getAttribute("SES_ID");
 			     		Connection con = ConnectionManager.getConnection();   							
 						Statement statement = con.createStatement();
-						String sql ="select * from customer c, billingaddress b where c.custID = '"+session.getAttribute("SES_ID")+ "'";
+						String sql ="select * from customer c join billingaddress b on c.custID = b.custID where c.custID = '"+session.getAttribute("SES_ID")+ "'";
 						ResultSet resultSet = statement.executeQuery(sql);
-						while(resultSet.next()){
+						if(resultSet.next()){
 					%>
                     <form action="updateAddressProcess.jsp" method="post">  
 			    		<div class="user-details">
@@ -62,8 +62,40 @@
 	
 		                  <div class="input-box button" style="text-align: center;">
 		                        <a href="Homepage.jsp?custID=<%=session.getAttribute("SES_ID") %>" style="text-decoration:none; background-color: #ccc; color:black;">Back to Homepage</a>
-		                        <input type="Submit" value="Update Billing Address" onclick="update()" style="background-color: green">		           
-		                        <a href="deleteAccount.jsp?<%=session.getAttribute("SES_ID") %>" onclick="delete()" style="text-decoration:none; background-color: red;">Delete Account</a>
+		                        <input type="Submit" value="Update Billing Address" onclick="update()" style="background-color: green">		           		                      
+		                  </div>
+                    </form>
+                    <%}else{ %>
+                    	No Billing Address yet. Add Now!
+                    	<form action="addAddressProcess.jsp" method="post">  
+			    		<div class="user-details">
+			    			                               
+		                    <input type="hidden" name="billing" value="B">                    
+
+		                    <div class="input-box">
+			                    <span class="details">Billing Address</span>
+			                    <input type="text" name="address" >
+		                    </div>
+		                                
+		                    <div class="input-box">
+			                    <span class="details">Billing City</span>
+			                    <input type="text" name="city" >
+		                    </div>
+		                                
+		                    <div class="input-box">
+			                    <span class="details">Billing State</span>
+			                    <input type="text" name="state" >
+		                    </div>
+		                                
+		                    <div class="input-box">
+			                    <span class="details">Billing Poscode</span>
+			                    <input type="text" name="poscode" >
+		                    </div>
+		                  </div>  
+	
+		                  <div class="input-box button" style="text-align: center;">
+		                   <a href="Homepage.jsp?custID=<%=session.getAttribute("SES_ID") %>" style="text-decoration:none; background-color: #ccc; color:black;">Back to Homepage</a>		                    
+		                        <input type="Submit" value="Add Billing Address" onclick="addBilling()" style="background-color: green">		           	                     
 		                  </div>
                     </form>
                 </div>    
