@@ -92,7 +92,6 @@
  
     <!--SEARCH BAR-->
     <form>
-      <input type="text" name="search" placeholder="Search..">
       </form><br><br><br> <div class="row">
 		<%
 		        try{
